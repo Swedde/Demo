@@ -9,15 +9,17 @@
         <sql>
             CREATE TABLE IF NOT EXISTS users (
                 id BIGSERIAL PRIMARY KEY,
-                username VARCHAR(50) NOT NULL UNIQUE,
-                created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+                name VARCHAR(50) NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL,
+                updated_at TIMESTAMPTZ NOT NULL
             );
 
-
             CREATE TABLE IF NOT EXISTS events (
-            id BIGSERIAL PRIMARY KEY,
-            type VARCHAR(200) NOT NULL,
-            created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+                id BIGSERIAL PRIMARY KEY,
+                type VARCHAR(200) NOT NULL UNIQUE,
+                count BIGINT NOT NULL DEFAULT 0,
+                created_at TIMESTAMPTZ NOT NULL,
+                updated_at TIMESTAMPTZ NOT NULL
             );
         </sql>
     </changeSet>

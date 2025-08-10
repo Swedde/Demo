@@ -11,6 +11,7 @@ public class EventMapper {
         return Event.builder()
             .id(eventEntity.getId())
             .type(eventEntity.getType())
+            .count(eventEntity.getCount())
             .createdAt(eventEntity.getCreatedAt())
             .build();
 	}
@@ -26,6 +27,7 @@ public class EventMapper {
         return EventDto.builder()
             .id(event.getId())
             .type(event.getType())
+            .count(event.getCount())
             .createdAt(event.getCreatedAt())
             .build();
     }
