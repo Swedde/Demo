@@ -9,13 +9,11 @@ import java.time.OffsetDateTime;
 @Builder
 @Getter
 @Setter
-public class Event {
+public class User {
 
     private Long id;
 
-    private String type;
-
-    private Long count;
+    private String name;
 
     private OffsetDateTime createdAt;
 }

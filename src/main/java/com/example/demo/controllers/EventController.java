@@ -26,12 +26,4 @@ public class EventController {
             .toList();
         return ResponseEntity.ok(events);
     }
-
-    @PutMapping
-    public ResponseEntity<EventDto> createEvent(
-        @RequestBody EventDto eventDto
-    ) {
-        Event event = eventService.createEvent(eventMapper.mapDtoToDomain(eventDto));
-        return ResponseEntity.status(HttpStatus.CREATED).body(eventMapper.mapDomainToDto(event));
-    }
 }

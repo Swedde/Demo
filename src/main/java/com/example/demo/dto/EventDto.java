@@ -15,5 +15,7 @@ public class EventDto {
 
 	private String type;
 
+	private Long count;
+
     private OffsetDateTime createdAt;
 }
