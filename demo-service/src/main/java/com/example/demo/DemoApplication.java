@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     SecurityAutoConfiguration.class,
     UserDetailsServiceAutoConfiguration.class
 })
-@EntityScan("com.example.demo.entities") // Укажите правильный пакет
+@EntityScan("com.example.demo.entities")
 @EnableJpaRepositories("com.example.demo.repositories")
 public class DemoApplication {
 
