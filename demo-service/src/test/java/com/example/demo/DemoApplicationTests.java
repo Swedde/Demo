@@ -1,13 +1,12 @@
 package com.example.demo;
 
+import com.example.demo.helpers.BaseTestWithDb;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class DemoApplicationTests {
+class DemoApplicationTests extends BaseTestWithDb {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
