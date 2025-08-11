@@ -27,6 +27,11 @@ public class BaseTestWithDb {
         );
 
         postgresqlContainer.start();
+        try {
+            Thread.sleep(Duration.of(1, ChronoUnit.SECONDS));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Autowired
