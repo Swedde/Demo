@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1" author="your_name">
+    <changeSet id="1" author="swedde">
         <sql>
             CREATE TABLE IF NOT EXISTS users (
                 id BIGSERIAL PRIMARY KEY,
@@ -21,6 +21,23 @@
                 created_at TIMESTAMPTZ NOT NULL,
                 updated_at TIMESTAMPTZ NOT NULL
             );
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="swedde">
+        <sql>
+            CREATE TABLE IF NOT EXISTS queue_tasks (
+                id                BIGSERIAL PRIMARY KEY,
+                queue_name        TEXT NOT NULL,
+                payload           TEXT,
+                created_at        TIMESTAMP WITH TIME ZONE DEFAULT now(),
+                next_process_at   TIMESTAMP WITH TIME ZONE DEFAULT now(),
+                attempt           INTEGER                  DEFAULT 0,
+                reenqueue_attempt INTEGER                  DEFAULT 0,
+                total_attempt     INTEGER                  DEFAULT 0
+            );
+            CREATE INDEX IF NOT EXISTS queue_tasks_name_time_desc_idx
+                ON queue_tasks USING btree (queue_name, next_process_at, id DESC);
         </sql>
     </changeSet>
 

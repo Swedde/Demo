@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.domain.Event;
 import com.example.demo.entities.EventEntity;
+import com.example.demo.kafka.EventKafkaProducer;
 import com.example.demo.mappers.EventMapper;
 import com.example.demo.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class EventService {
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
+    private final EventKafkaProducer eventKafkaProducer;
 
     @Transactional(readOnly = true)
     public List<Event> getAllLists() {
@@ -44,5 +46,9 @@ public class EventService {
     public Event createEventUpsert(String type) {
         EventEntity eventEntity = eventRepository.upsert(type);
         return eventMapper.mapEntityToDomain(eventEntity);
+    }
+
+    public void createEventKafka(String type) {
+        eventKafkaProducer.sendEvent(type);
     }
 }

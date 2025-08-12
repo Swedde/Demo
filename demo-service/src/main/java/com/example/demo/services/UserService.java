@@ -42,4 +42,13 @@ public class UserService {
         eventService.createEventUpsert("user_create_upsert");
         return userMapper.mapEntityToDomain(userEntity);
     }
+
+    @Transactional
+    public User createUserKafka(User user) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setName(user.getName());
+        userEntity = userRepository.save(userEntity);
+        eventService.createEventKafka("user_create_kafka");
+        return userMapper.mapEntityToDomain(userEntity);
+    }
 }

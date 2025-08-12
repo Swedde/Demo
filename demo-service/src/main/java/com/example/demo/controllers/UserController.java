@@ -46,4 +46,12 @@ public class UserController {
         User user = userService.createUserUpsert(userMapper.mapDtoToDomain(userDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.mapDomainToDto(user));
     }
+
+    @PutMapping("/kafka")
+    public ResponseEntity<UserDto> createUserKafka(
+        @RequestBody UserDto userDto
+    ) {
+        User user = userService.createUserKafka(userMapper.mapDtoToDomain(userDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.mapDomainToDto(user));
+    }
 }

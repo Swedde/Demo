@@ -46,6 +46,23 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>ru.yoomoney.tech</groupId>
+            <artifactId>db-queue</artifactId>
+            <version>15.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>3.7.0</version> <!-- Use a compatible version -->
+        </dependency>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId> <!-- or any other backend -->
+        </dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
